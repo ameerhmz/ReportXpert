@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ReportXpert — Executive & Operational Overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.35;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      box-sizing: border-box;
+      overflow: hidden;
+      padding: 13mm 16mm 11mm 16mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 9px;
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #76b900, #4c7c00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(118, 185, 0, 0.3);
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+    }
+
+    .brand-title span.highlight {
+      color: #76b900;
+    }
+
+    .brand-title span.sub {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #64748b;
+      margin-left: 6px;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .pill {
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .pill-nvidia {
+      background: #f4fae6;
+      color: #4c7c00;
+      border: 1px solid #c2e28f;
+    }
+
+    .pill-green {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .pill-blue {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .tagline {
+      font-size: 11px;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .highlight-strip {
+      background: linear-gradient(90deg, #f8fafc, #f4fae6 45%, #ecfdf5 100%);
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #76b900;
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 10.5px;
+      color: #334155;
+      margin-top: 7px;
+    }
+
+    .highlight-strip strong {
+      color: #0f172a;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #64748b;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #76b900;
+    }
+
+    /* Cards */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .card {
+      border-radius: 9px;
+      padding: 9px 12px;
+    }
+
+    .problem-card {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+    }
+
+    .solution-card {
+      background: #f4fae6;
+      border: 1px solid #cce899;
+    }
+
+    .card-heading {
+      font-size: 11.5px;
+      font-weight: 800;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .problem-card .card-heading { color: #b91c1c; }
+    .solution-card .card-heading { color: #3d6800; }
+
+    .card-text {
+      font-size: 9.5px;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    .card-list {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    .card-list li {
+      font-size: 9px;
+      margin-bottom: 2.5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .card-list li::before { content: "•"; font-weight: bold; }
+    .problem-card .card-list li::before { color: #dc2626; }
+    .solution-card .card-list li::before { color: #5c9200; }
+
+    /* Security Highlight Box */
+    .security-box {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 9px;
+      padding: 9px 14px;
+    }
+
+    .security-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .security-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #76b900;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .security-badge {
+      font-size: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      background: #1e293b;
+      color: #cbd5e1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #334155;
+    }
+
+    .security-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .sec-item {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 6px 8px;
+    }
+
+    .sec-item h5 {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 2px;
+    }
+
+    .sec-item p {
+      font-size: 8.5px;
+      color: #94a3b8;
+      line-height: 1.25;
+    }
+
+    /* Comparison Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 9px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border: 1px solid #e2e8f0;
+    }
+
+    .compare-table th {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 6px 10px;
+      text-align: left;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .compare-table td {
+      padding: 5px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+
+    .compare-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .compare-table tr td:first-child {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .compare-table tr td:last-child {
+      font-weight: 600;
+      color: #047857;
+      background: #ecfdf5;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5px;
+      color: #94a3b8;
+    }
+
+    .footer-left {
+      display: flex;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .footer-left span strong {
+      color: #475569;
+    }
+
+    /* ========================================================
+       PAGE 2 SPECIFICS
+       ======================================================== */
+    .p2-header-title {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: #0f172a;
+    }
+
+    .p2-header-title span {
+      color: #76b900;
+    }
+
+    .p2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .p2-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 8px 11px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .p2-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+
+    .p2-card-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .p2-tag {
+      font-size: 7.5px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+
+    .p2-card-text {
+      font-size: 9px;
+      color: #475569;
+      line-height: 1.32;
+    }
+
+    .p2-card-text ul {
+      margin-left: 14px;
+      margin-top: 3px;
+    }
+
+    .p2-card-text li {
+      margin-bottom: 2px;
+    }
+
+    /* Conversational Prompt Box on Page 2 */
+    .chat-showcase {
+      background: #1e293b;
+      border-radius: 9px;
+      padding: 8px 12px;
+      color: #ffffff;
+    }
+
+    .chat-showcase-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #76b900;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 7px;
+    }
+
+    .chat-bubble {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 6px 8px;
+    }
+
+    .chat-q {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #f1f5f9;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 2px;
+    }
+
+    .chat-a {
+      font-size: 8px;
+      color: #94a3b8;
+      line-height: 1.25;
+    }
+
+    /* Bottom Technical Strip */
+    .tech-strip {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 6px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5px;
+      color: #475569;
+    }
+
+    .tech-strip strong {
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       PAGE 1: THE EXECUTIVE LAYMAN STORY
+       ======================================================== -->
+  <div class="page">
+    
+    <!-- 1. Header -->
+    <div class="header">
+      <div class="brand-row">
+        <div class="logo-group">
+          <div class="logo-badge">RX</div>
+          <div>
+            <h1 class="brand-title">Report<span class="highlight">Xpert</span> <span class="sub">// AUUP Sovereign AI</span></h1>
+            <p class="tagline">NVIDIA DGX-Powered Autonomous Institutional Reporting & Accreditation Engine</p>
+          </div>
+        </div>
+        <div class="pill-group">
+          <span class="pill pill-nvidia">NVIDIA DGX ON-CAMPUS</span>
+          <span class="pill pill-green">0.00 KB CLOUD EGRESS</span>
+          <span class="pill pill-blue">NAAC / NIRF / MDRF</span>
+        </div>
+      </div>
+      <div class="highlight-strip">
+        <strong>The Big Picture:</strong> Universities drown in paperwork every semester. ReportXpert gives <strong>Amity University Uttar Pradesh (AUUP)</strong> its own private, personalized AI on an on-campus <strong>NVIDIA DGX supercomputer</strong>. It acts as an ultra-fast digital registrar that reads university documents, catches mistakes, and compiles official accreditation reports in <strong>5 minutes</strong> — 100% offline with zero cloud leaks.
+      </div>
+    </div>
+
+    <!-- 2. Problem vs Solution -->
+    <div>
+      <div class="section-title"><span class="dot"></span> 1. The Everyday Administrative Headache & The Fix</div>
+      <div class="two-col">
+        <div class="card problem-card">
+          <div class="card-heading">❌ The Problem: Accreditation Nightmare</div>
+          <p class="card-text">Every accreditation cycle (NAAC, NIRF, MDRF) brings campus operations to a grinding halt:</p>
+          <ul class="card-list">
+            <li><strong>Lost Proofs:</strong> Certificates, grant letters, and exam marks trapped in paper folders.</li>
+            <li><strong>Spreadsheet Errors:</strong> Mismatched formulas and human mistakes risk lowering grades.</li>
+            <li><strong>Faculty Burnout:</strong> 50+ professors pulled from teaching for 4 months to manually type tables.</li>
+          </ul>
+        </div>
+
+        <div class="card solution-card">
+          <div class="card-heading">✅ The Fix: 24/7 On-Campus AI Auditor</div>
+          <p class="card-text">ReportXpert functions as an always-on institutional compliance team inside the university servers:</p>
+          <ul class="card-list">
+            <li><strong>Drop Any File:</strong> Resumes, PDFs, scans, and sheets are read and mapped automatically.</li>
+            <li><strong>Proactive Audit:</strong> Validates research papers against Scopus and audits student-faculty ratios.</li>
+            <li><strong>Finished Dossiers:</strong> 1-click generation of ready-to-submit official Word and Excel books.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. The Security Pillar (Most Important Part) -->
+    <div>
+      <div class="section-title"><span class="dot"></span> 2. Why "Personalized & Private" on NVIDIA DGX is the Critical Pillar</div>
+      <div class="security-box">
+        <div class="security-header">
+          <div class="security-title">🔒 Absolute Data Sovereignty (Why Public AI Fails for Universities)</div>
+          <span class="security-badge">Air-Gapped Sovereign Enclave</span>
+        </div>
+        <p style="font-size: 9px; color: #cbd5e1; line-height: 1.3;">
+          Using commercial tools like ChatGPT risks leaking confidential student grades, faculty salaries, and unpublished patent drafts to foreign cloud servers. ReportXpert eliminates this risk completely:
+        </p>
+        <div class="security-points">
+          <div class="sec-item">
+            <h5>1. On-Campus NVIDIA DGX</h5>
+            <p>The AI runs entirely inside the university's physical server room on university-owned hardware.</p>
+          </div>
+          <div class="sec-item">
+            <h5>2. Zero Internet Egress (0 KB)</h5>
+            <p>The system operates 100% offline. Student records and exams never leave the campus network.</p>
+          </div>
+          <div class="sec-item">
+            <h5>3. Natural Language Console</h5>
+            <p>Deans and faculty can prompt the AI in plain English and receive instant, proof-backed answers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Before vs After Table -->
+    <div>
+      <div class="section-title"><span class="dot"></span> 3. The Institutional Transformation</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Area</th>
+            <th style="width: 37%;">Before ReportXpert (Manual Nightmare)</th>
+            <th style="width: 38%;">With ReportXpert (AUUP Sovereign AI)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Faculty Time</td>
+            <td>50+ professors working late for 3 to 4 months</td>
+            <td>Completed in 5 minutes by on-premise AI</td>
+          </tr>
+          <tr>
+            <td>Research Tracking</td>
+            <td>Missing citations, uncounted Scopus publications</td>
+            <td>100% of papers, patents & grants automatically mapped</td>
+          </tr>
+          <tr>
+            <td>Inspection Day</td>
+            <td>Panic searching through drawers for paper certificates</td>
+            <td>Instant digital audit trail with 1-click links to proof</td>
+          </tr>
+          <tr>
+            <td>Data Privacy</td>
+            <td>Risk of data breaches by using public cloud tools</td>
+            <td>100% secured on campus on NVIDIA DGX hardware</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5. Footer -->
+    <div class="footer">
+      <div class="footer-left">
+        <span><strong>Executive Brief:</strong> Page 1 of 2</span>
+        <span><strong>Hardware:</strong> On-Premise NVIDIA DGX Supercomputer</span>
+      </div>
+      <div>ReportXpert © 2026 • Autonomous University Accreditation Engine</div>
+    </div>
+
+  </div>
+
+  <!-- ========================================================
+       PAGE 2: DETAILED CORE CAPABILITIES & OPERATIONS
+       ======================================================== -->
+  <div class="page">
+    
+    <!-- P2 Header -->
+    <div class="header">
+      <div class="brand-row">
+        <div class="logo-group">
+          <div class="logo-badge">RX</div>
+          <div>
+            <h2 class="p2-header-title">Report<span>Xpert</span> // Core Capabilities & Daily Operations</h2>
+            <p class="tagline">How Faculty, Deans, and Committees Use the System Daily</p>
+          </div>
+        </div>
+        <div class="pill-group">
+          <span class="pill pill-green">Page 2 of 2</span>
+          <span class="pill pill-nvidia">AUUP Supercomputer Node</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capabilities Grid -->
+    <div>
+      <div class="section-title"><span class="dot"></span> 1. Five Core Capabilities in Everyday Action</div>
+      <div class="p2-grid">
+        
+        <!-- Card 1 -->
+        <div class="p2-card">
+          <div class="p2-card-header">
+            <span class="p2-card-title">👨‍🏫 Faculty Profiles from CV / PDF</span>
+            <span class="p2-tag">Auto-Profile</span>
+          </div>
+          <div class="p2-card-text">
+            Upload any professor's resume (Word or PDF) or point to their web profile. The AI automatically parses:
+            <ul>
+              <li><strong>Every research paper</strong> (verified against Scopus & Web of Science).</li>
+              <li><strong>Patents & grants</strong> (DST, DBT, CSIR funding mapped with sanctioned amounts).</li>
+              <li><strong>Academic Performance Indicator (API)</strong> scores calculated automatically.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p2-card">
+          <div class="p2-card-header">
+            <span class="p2-card-title">🏛️ 1-Click Accreditation Reports</span>
+            <span class="p2-tag">NAAC / NIRF / MDRF</span>
+          </div>
+          <div class="p2-card-text">
+            Inspection bodies demand both numbers and written explanations. ReportXpert writes both:
+            <ul>
+              <li><strong>NAAC SSR (All 7 Criteria):</strong> Curriculum, research, governance, and infrastructure.</li>
+              <li><strong>NIRF & MDRF Rankings:</strong> TLR (Teaching), RPC (Research), GO (Graduation), OI (Inclusivity).</li>
+              <li>Produces complete quantitative tables (QnM) and qualitative narratives (QlM).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p2-card">
+          <div class="p2-card-header">
+            <span class="p2-card-title">📊 Placements, Sports & Campus Events</span>
+            <span class="p2-tag">Cross-Department</span>
+          </div>
+          <div class="p2-card-text">
+            Aggregates non-academic achievements into verified ranking points:
+            <ul>
+              <li><strong>Campus Placements:</strong> Tracks packages, recruiters, and offer letters.</li>
+              <li><strong>Sports & Cultural Trophies:</strong> Reads event photos and certificates with Vision AI.</li>
+              <li><strong>Community Outreach:</strong> Verifies NSS/NCC extension work and student hours.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p2-card">
+          <div class="p2-card-header">
+            <span class="p2-card-title">📑 Dynamic Multi-Format Template Engine</span>
+            <span class="p2-tag">Word & Excel</span>
+          </div>
+          <div class="p2-card-text">
+            Different ranking bodies and committees require strict formats:
+            <ul>
+              <li><strong>Official Word (.docx):</strong> Formatted with official university headers and styling.</li>
+              <li><strong>Official Excel (.xlsx):</strong> Multi-tab workbooks with exact government column names.</li>
+              <li>No manual formatting or column adjustments required by staff.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Conversational Console -->
+    <div>
+      <div class="section-title"><span class="dot"></span> 2. The Conversational AI Console: Ask Anything in Plain English</div>
+      <div class="chat-showcase">
+        <div class="chat-showcase-title">💬 Everyday Questions University Leadership Can Ask</div>
+        <div class="chat-grid">
+          <div class="chat-bubble">
+            <div class="chat-q">"Extract research metrics from Dr. Sharma's CV"</div>
+            <div class="chat-a">Extracts 18 Scopus papers, 2 granted patents, and ₹45L grant into faculty database.</div>
+          </div>
+          <div class="chat-bubble">
+            <div class="chat-q">"Compile NAAC Criterion 3.4 research dossier"</div>
+            <div class="chat-a">Generates ready-to-submit Word table of all 2024 indexed papers with verified DOIs.</div>
+          </div>
+          <div class="chat-bubble">
+            <div class="chat-q">"Calculate our NIRF 2025 student-faculty ratio"</div>
+            <div class="chat-a">Cross-checks enrollment against active faculty list, verifies 1:16.2 ratio with proof.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How the Triad Works -->
+    <div>
+      <div class="section-title"><span class="dot"></span> 3. The 3 Local AI Brains Powering the System</div>
+      <div class="two-col">
+        <div class="card" style="background:#f8fafc; border:1px solid #e2e8f0; padding:8px 10px;">
+          <strong style="font-size:10px; color:#0f172a;">🦙 The Manager (Llama 3.2 3B)</strong>
+          <p style="font-size:8.5px; color:#475569; margin-top:2px;">Chat assistant that understands plain-English prompts from professors, coordinates tasks, and explains results.</p>
+        </div>
+        <div class="card" style="background:#f8fafc; border:1px solid #e2e8f0; padding:8px 10px;">
+          <strong style="font-size:10px; color:#0f172a;">🧠 The Deep Thinker (DeepSeek-R1 7B)</strong>
+          <p style="font-size:8.5px; color:#475569; margin-top:2px;">The strict auditor that checks math, searches for data anomalies, and ensures statutory compliance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Strip -->
+    <div class="tech-strip">
+      <div><strong>Deployment:</strong> AUUP NVIDIA DGX Supercomputer Enclave</div>
+      <div><strong>Security:</strong> 0.00 KB Cloud Egress • 100% Local Sovereign Inference</div>
+      <div><strong>SIH 2024:</strong> Problem Statement SIH26117</div>
+    </div>
+
+    <!-- P2 Footer -->
+    <div class="footer">
+      <div class="footer-left">
+        <span><strong>Technical & Operational:</strong> Page 2 of 2</span>
+        <span><strong>Sovereignty:</strong> Verified Zero Cloud Leakage</span>
+      </div>
+      <div>ReportXpert © 2026 • Autonomous University Accreditation Engine</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
