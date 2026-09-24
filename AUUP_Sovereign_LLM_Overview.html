@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AUUP Sovereign AI — 1-Page Executive & Technical Overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      overflow: hidden;
+      padding: 12mm 15mm 10mm 15mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.32;
+    }
+
+    /* Top Header */
+    .header {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #76b900, #4c7c00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: -0.5px;
+      box-shadow: 0 4px 10px rgba(118, 185, 0, 0.3);
+    }
+
+    .brand-title {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: #0f172a;
+    }
+
+    .brand-title span.green {
+      color: #76b900;
+    }
+
+    .brand-title span.sub {
+      font-size: 14px;
+      font-weight: 600;
+      color: #64748b;
+      margin-left: 4px;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 5px;
+    }
+
+    .pill {
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 7px;
+      border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .pill-nvidia {
+      background: #f4fae6;
+      color: #4c7c00;
+      border: 1px solid #c2e28f;
+    }
+
+    .pill-green {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .pill-blue {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .tagline {
+      font-size: 10.5px;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .highlight-strip {
+      background: linear-gradient(90deg, #f8fafc, #f4fae6 45%, #ecfdf5 100%);
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #76b900;
+      border-radius: 7px;
+      padding: 6px 11px;
+      font-size: 10px;
+      color: #334155;
+      margin-top: 6px;
+    }
+
+    .highlight-strip strong {
+      color: #0f172a;
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #64748b;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #76b900;
+    }
+
+    /* Two Column Problem vs Solution */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .problem-card {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 9px;
+      padding: 8px 11px;
+    }
+
+    .solution-card {
+      background: #f4fae6;
+      border: 1px solid #cce899;
+      border-radius: 9px;
+      padding: 8px 11px;
+    }
+
+    .card-heading {
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .problem-card .card-heading { color: #b91c1c; }
+    .solution-card .card-heading { color: #3d6800; }
+
+    .card-text {
+      font-size: 9.5px;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    .card-list {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    .card-list li {
+      font-size: 9px;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .card-list li::before { content: "•"; font-weight: bold; }
+    .problem-card .card-list li::before { color: #dc2626; }
+    .solution-card .card-list li::before { color: #5c9200; }
+
+    /* 5 Core Pillars Grid */
+    .five-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+    }
+
+    .pillar-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 7px 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pillar-icon {
+      font-size: 18px;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .pillar-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .pillar-desc {
+      font-size: 8.5px;
+      color: #64748b;
+      line-height: 1.25;
+    }
+
+    /* Conversational Console Box */
+    .console-box {
+      background: #0f172a;
+      border-radius: 9px;
+      padding: 8px 12px;
+      color: #ffffff;
+    }
+
+    .console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .console-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #76b900;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .console-badge {
+      font-size: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #cbd5e1;
+      background: #1e293b;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #334155;
+    }
+
+    .prompts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+    }
+
+    .prompt-chip {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 5px 8px;
+    }
+
+    .prompt-q {
+      font-size: 8.5px;
+      color: #f1f5f9;
+      font-weight: 600;
+      margin-bottom: 2px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .prompt-a {
+      font-size: 8px;
+      color: #94a3b8;
+      line-height: 1.2;
+    }
+
+    /* Transformation Banner */
+    .compare-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background: #1e293b;
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 7px 12px;
+    }
+
+    .compare-side h4 {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .before-side h4 { color: #f87171; }
+    .after-side h4 { color: #76b900; }
+
+    .compare-side p {
+      font-size: 8.5px;
+      color: #cbd5e1;
+      line-height: 1.3;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5px;
+      color: #94a3b8;
+    }
+
+    .footer-left {
+      display: flex;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .footer-left span strong {
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Header & Identity -->
+  <div class="header">
+    <div class="brand-row">
+      <div class="logo-group">
+        <div class="logo-badge">DGX</div>
+        <div>
+          <h1 class="brand-title">AUUP <span class="green">Sovereign AI</span> <span class="sub">// Personalized LLM</span></h1>
+          <p class="tagline">NVIDIA DGX-Powered Autonomous Institutional Reporting & Accreditation Engine</p>
+        </div>
+      </div>
+      <div class="pill-group">
+        <span class="pill pill-nvidia">NVIDIA DGX ON-CAMPUS</span>
+        <span class="pill pill-green">0.00 KB CLOUD EGRESS</span>
+        <span class="pill pill-blue">NAAC / NIRF / MDRF</span>
+      </div>
+    </div>
+    <div class="highlight-strip">
+      <strong>In One Sentence:</strong> Powered by on-premise <strong>NVIDIA DGX</strong> compute, this system creates <strong>AUUP’s own personalized LLM</strong> that transforms scattered campus data into audit-ready reports for <strong>NAAC, NIRF, research, placements, and faculty profiles</strong> — with 100% data security and zero cloud leakage.
+    </div>
+  </div>
+
+  <!-- 2. Challenge vs Solution -->
+  <div>
+    <div class="section-title"><span class="dot"></span> 1. The Challenge vs. The DGX Sovereign Solution</div>
+    <div class="two-col">
+      <div class="problem-card">
+        <div class="card-heading">❌ The Problem: Manual Reporting Nightmare</div>
+        <p class="card-text">Every semester, universities struggle to compile hundreds of complex reports for statutory ranking bodies and internal committees:</p>
+        <ul class="card-list">
+          <li><strong>Scattered Records:</strong> Papers, patents, and grant letters buried across departmental drives.</li>
+          <li><strong>Manual Compilation:</strong> Months wasted copy-pasting into NAAC, NIRF & MDRF spreadsheets.</li>
+          <li><strong>Discrepancies & Leaks:</strong> Human math errors risk grades; public cloud AI leaks student data.</li>
+        </ul>
+      </div>
+
+      <div class="solution-card">
+        <div class="card-heading">✅ The Fix: AUUP's Personalized Local LLM</div>
+        <p class="card-text">An always-on institutional registrar and compliance auditor running natively on AUUP's on-campus NVIDIA DGX hardware:</p>
+        <ul class="card-list">
+          <li><strong>Drop Any File:</strong> CVs, PDFs, blueprints & spreadsheets are parsed and mapped automatically.</li>
+          <li><strong>Proactive Audit:</strong> Validates research against Scopus & cross-checks student-faculty ratios.</li>
+          <li><strong>100% Air-Gapped:</strong> Confidential salaries, student marks & patents never leave AUUP's campus.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Five Core Superpowers -->
+  <div>
+    <div class="section-title"><span class="dot"></span> 2. Five Core Capabilities (What It Actually Does)</div>
+    <div class="five-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">🏛️</div>
+        <div class="pillar-title">Accreditation & Rankings</div>
+        <div class="pillar-desc">1-click generation of official dossiers for <strong>NAAC SSR, NIRF & MDRF</strong>. Formats quantitative data (QnM) and narratives (QlM).</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">👨‍🏫</div>
+        <div class="pillar-title">Faculty Research Profiles</div>
+        <div class="pillar-desc">Extracts publications, Scopus citations, granted patents, funded projects, and API scores directly from <strong>faculty CVs, PDFs & web data</strong>.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">📊</div>
+        <div class="pillar-title">Placements & Sports</div>
+        <div class="pillar-desc">Aggregates campus placement stats, athletic trophies, and extracurricular extension activities into verified institutional metrics.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">📑</div>
+        <div class="pillar-title">Dynamic Template Engine</div>
+        <div class="pillar-desc">Supports custom templates for departments, committees, and ranking bodies—exporting to publication-ready <strong>Word (.docx) & Excel (.xlsx)</strong>.</div>
+      </div>
+      <div class="pillar-card" style="border-color: #c2e28f; background: #fafdf5;">
+        <div class="pillar-icon">🔒</div>
+        <div class="pillar-title">100% DGX Data Security</div>
+        <div class="pillar-desc"><strong>The Critical Pillar:</strong> Complete sovereignty on local NVIDIA DGX. Zero third-party cloud egress—all institutional data remains private.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Conversational AI Console -->
+  <div>
+    <div class="section-title"><span class="dot"></span> 3. Conversational Intelligence: Ask Anything in Natural English</div>
+    <div class="console-box">
+      <div class="console-header">
+        <div class="console-title">💬 On-Premise DGX Prompt Engine</div>
+        <span class="console-badge">Zero-Latency Sovereign Inference</span>
+      </div>
+      <div class="prompts-grid">
+        <div class="prompt-chip">
+          <div class="prompt-q">"Extract research metrics from Dr. Sharma's CV"</div>
+          <div class="prompt-a">AI extracts 14 Scopus papers, 2 granted patents, and ₹45L DST grant into faculty database.</div>
+        </div>
+        <div class="prompt-chip">
+          <div class="prompt-q">"Draft NAAC Criterion 3.4 research dossier"</div>
+          <div class="prompt-a">Compiles all 2024 indexed publications into an official NAAC Word table with verified DOI links.</div>
+        </div>
+        <div class="prompt-chip">
+          <div class="prompt-q">"Check our NIRF 2025 student-faculty ratio"</div>
+          <div class="prompt-a">Audits enrollment against active faculty list, flags 1:16.4 ratio, and verifies department compliance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Transformation Before vs After -->
+  <div class="compare-bar">
+    <div class="compare-side before-side">
+      <h4>❌ Before AUUP Sovereign AI</h4>
+      <p>50+ professors pulled from teaching, months of manual Excel compilation, panic when inspection teams ask for proofs, and severe cloud privacy risks.</p>
+    </div>
+    <div class="compare-side after-side">
+      <h4>✅ With AUUP Sovereign AI</h4>
+      <p>1 on-campus NVIDIA DGX engine, 5-minute automated dossiers, 100% verified proof backing, zero cloud leakage, and guaranteed top-tier accreditation readiness.</p>
+    </div>
+  </div>
+
+  <!-- 6. Footer -->
+  <div class="footer">
+    <div class="footer-left">
+      <span><strong>Hardware:</strong> NVIDIA DGX Local AI Supercomputer</span>
+      <span><strong>Models:</strong> Llama 3.2 (Orchestration) • DeepSeek-R1 (Audit) • Qwen2.5-VL (OCR)</span>
+    </div>
+    <div>AUUP Institutional Sovereign AI Engine • 100% On-Campus Verified</div>
+  </div>
+
+</body>
+</html>
