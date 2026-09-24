@@ -1,0 +1,27 @@
+# ==============================================================================
+# ReportXpert Sovereign University AI Workbench — Python Dependencies
+# ==============================================================================
+
+# Core Web & API Framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+python-multipart>=0.0.12
+websockets>=12.0
+requests>=2.31.0
+
+# Sovereign Agent Workflow & LangGraph
+langgraph>=0.2.0
+langchain-core>=0.3.0
+
+# Document & Spreadsheet Compilers (.docx, .pptx, .xlsx, .pdf)
+python-docx>=1.1.0
+python-pptx>=1.0.0
+openpyxl>=3.1.0
+pandas>=2.0.0
+pypdf>=4.0.0
+
+# System Telemetry & Multimodal Utilities
+psutil>=5.9.0
+pillow>=10.0.0
+beautifulsoup4>=4.12.0

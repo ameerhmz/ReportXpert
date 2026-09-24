@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
+
+:root {
+  /* Warm Sovereign Industrial Palette — Human Artisan Tones */
+  --chassis-bg: #131514;
+  --chassis-card: #1a1d1b;
+  --chassis-surface: #222624;
+  --chassis-raised: #2a2f2c;
+  --chassis-border: #333935;
+  --chassis-border-light: rgba(244, 239, 234, 0.08);
+
+  /* Human Text Tones */
+  --text-primary: #f5f1e8;
+  --text-secondary: #b8b2a4;
+  --text-muted: #7d776b;
+
+  /* Natural Earth & Metal Pigments */
+  --accent-amber: #de8535;
+  --accent-amber-subtle: rgba(222, 133, 53, 0.12);
+  --accent-lichen: #4b9b74;
+  --accent-lichen-subtle: rgba(75, 155, 116, 0.12);
+  --accent-terracotta: #c9523c;
+  --accent-terracotta-subtle: rgba(201, 82, 60, 0.12);
+  --accent-indigo: #3d6a8a;
+  --accent-indigo-subtle: rgba(61, 106, 138, 0.12);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #131514;
+  color: #f5f1e8;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#__next,
+body > div:first-child {
+  height: 100%;
+  width: 100%;
+}
+
+/* Precision Drafting Grid */
+.bg-drafting-grid {
+  background-image: radial-gradient(rgba(244, 239, 234, 0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Custom Tactile Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #131514;
+}
+::-webkit-scrollbar-thumb {
+  background: #2f3431;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444b46;
+}
+
+/* Tactile Chassis Chamfer */
+.tactile-chamfer {
+  box-shadow: inset 0 1px 0 rgba(244, 239, 234, 0.08), 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.tactile-inset {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(244, 239, 234, 0.03);
+}
+
+/* Sidebar Chat Item Hover & Delete Button */
+.sidebar-chat-item .chat-delete-btn {
+  opacity: 0.5;
+  transition: opacity 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+  pointer-events: auto !important;
+}
+.sidebar-chat-item:hover .chat-delete-btn,
+.sidebar-chat-item.active .chat-delete-btn {
+  opacity: 1;
+}
+.sidebar-chat-item .chat-delete-btn:hover {
+  opacity: 1 !important;
+  color: #ef4444 !important;
+  background-color: #2e1917 !important;
+}
+
+/* React Flow custom dark theme */
+.react-flow__background {
+  background-color: #131514 !important;
+}
+.react-flow__node {
+  cursor: default !important;
+}
+
+/* Radar Pulse Animation */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.radar-badge {
+  animation: radar-pulse 2s infinite;
+}
+
+@keyframes glow-amber {
+  0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
+}
+
+.node-running {
+  animation: glow-amber 1.5s infinite;
+}
