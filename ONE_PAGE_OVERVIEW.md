@@ -1,6 +1,6 @@
-# 🎓 AUUP Sovereign AI: Personalized Institutional Intelligence & Report Engine
+# 🎓 ReportXpert: Personalized Institutional Intelligence & Report Engine
 
-> **In One Sentence:** Powered by on-premise **NVIDIA DGX** hardware, this system gives **AUUP (Amity University Uttar Pradesh)** its own private, personalized AI that automatically transforms campus data into audit-ready reports for **NAAC, NIRF, MDRF, research, placements, and faculty profiles** — with 100% data security and zero cloud leakage.
+> **In One Sentence:** Powered by on-premise **NVIDIA DGX** hardware, **ReportXpert** gives universities their own private, personalized AI that automatically transforms campus data into audit-ready reports for **NAAC, NIRF, MDRF, research, placements, and faculty profiles** — with 100% data security and zero cloud leakage.
 
 ---
 
@@ -12,8 +12,8 @@ Every semester, universities must compile hundreds of complex reports for statut
 
 ---
 
-### 💡 2. The Solution: AUUP’s Personalized On-Premise LLM
-Instead of relying on commercial cloud tools (like ChatGPT) that expose confidential student and university records to outside servers, this system creates **AUUP’s own private, personalized LLM running on on-campus NVIDIA DGX compute**.
+### 💡 2. The Solution: Personalized On-Premise LLM
+Instead of relying on commercial cloud tools (like ChatGPT) that expose confidential student and university records to outside servers, this system creates a **private, personalized LLM running on on-campus NVIDIA DGX compute**.
 
 It functions as an always-on institutional registrar and compliance specialist: faculty and leadership can simply **ask questions in natural English**, and the AI retrieves verified institutional ground truth, runs math checks, and drafts complete official documents instantly.
 
@@ -44,5 +44,5 @@ It functions as an always-on institutional registrar and compliance specialist: 
 ---
 
 ### 🎯 4. The Institutional Transformation
-* **Before AUUP Sovereign AI:** 50+ professors pulled from teaching, months of manual Excel compilation, panic on inspection day, and data security risks.  
-* **With AUUP Sovereign AI:** 1 private on-campus engine, 5-minute automated dossiers, 100% verified accuracy, and guaranteed data sovereignty.
+* **Before ReportXpert:** 50+ professors pulled from teaching, months of manual Excel compilation, panic on inspection day, and data security risks.  
+* **With ReportXpert:** 1 private on-campus engine, 5-minute automated dossiers, 100% verified accuracy, and guaranteed data sovereignty.
