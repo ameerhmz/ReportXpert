@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ReportXpert — Project Details & Innovation Overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.38;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      box-sizing: border-box;
+      overflow: hidden;
+      padding: 12mm 15mm 10mm 15mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #76b900, #4c7c00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(118, 185, 0, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+
+    .brand-title span.highlight {
+      color: #76b900;
+    }
+
+    .brand-title span.sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+      margin-left: 6px;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .pill {
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 3px 7px;
+      border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+
+    .pill-nvidia {
+      background: #f4fae6;
+      color: #4c7c00;
+      border: 1px solid #c2e28f;
+    }
+
+    .pill-green {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .pill-blue {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .tagline {
+      font-size: 10.5px;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    /* Section Headings matching professor's 4 points */
+    .section-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #0f172a;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title .badge-num {
+      width: 19px;
+      height: 19px;
+      border-radius: 6px;
+      background: #76b900;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      flex-shrink: 0;
+    }
+
+    /* Cards & Containers */
+    .content-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 9px 12px;
+      margin-bottom: 7px;
+    }
+
+    .content-box p {
+      font-size: 9.3px;
+      color: #334155;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .content-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 7px 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .feature-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+
+    .feature-title {
+      font-size: 10.2px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .feature-tag {
+      font-size: 7.2px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      white-space: nowrap;
+    }
+
+    .feature-text {
+      font-size: 8.8px;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    .feature-text ul {
+      margin-left: 13px;
+      margin-top: 2px;
+    }
+
+    .feature-text li {
+      margin-bottom: 2px;
+    }
+
+    /* Security Highlight Banner */
+    .security-banner {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-top: 6px;
+    }
+
+    .sec-banner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+
+    .sec-banner-title {
+      font-size: 10px;
+      font-weight: 800;
+      color: #76b900;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .sec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .sec-pill-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 5px 7px;
+    }
+
+    .sec-pill-card h5 {
+      font-size: 8.8px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 2px;
+    }
+
+    .sec-pill-card p {
+      font-size: 8px;
+      color: #94a3b8;
+      line-height: 1.25;
+    }
+
+    /* Problem vs Solution Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 8.8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border: 1px solid #e2e8f0;
+      margin-top: 4px;
+    }
+
+    .compare-table th {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 5px 9px;
+      text-align: left;
+      font-size: 8.8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .compare-table td {
+      padding: 4.5px 9px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+      line-height: 1.3;
+    }
+
+    .compare-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .compare-table tr td:first-child {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .compare-table tr td:last-child {
+      font-weight: 600;
+      color: #047857;
+      background: #ecfdf5;
+    }
+
+    /* Future Scope 4-card grid */
+    .future-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .future-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 7px 10px;
+    }
+
+    .future-card h4 {
+      font-size: 9.8px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .future-card p {
+      font-size: 8.5px;
+      color: #475569;
+      line-height: 1.32;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.2px;
+      color: #94a3b8;
+    }
+
+    .footer-left {
+      display: flex;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+
+    .footer-left span strong {
+      color: #475569;
+    }
+
+    .tech-strip {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 5px 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.2px;
+      color: #475569;
+      margin-top: 5px;
+    }
+
+    .tech-strip strong {
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       PAGE 1: SECTIONS 1 & 2
+       1. Title and brief description of the idea/model
+       2. Key innovative features and uniqueness
+       ======================================================== -->
+  <div class="page">
+    
+    <!-- Header -->
+    <div class="header">
+      <div class="brand-row">
+        <div class="logo-group">
+          <div class="logo-badge">RX</div>
+          <div>
+            <h1 class="brand-title">Report<span class="highlight">Xpert</span> <span class="sub">// Project Submission Details</span></h1>
+            <p class="tagline">NVIDIA DGX-Powered Autonomous Institutional Intelligence & Accreditation Engine</p>
+          </div>
+        </div>
+        <div class="pill-group">
+          <span class="pill pill-nvidia">ON-CAMPUS NVIDIA DGX</span>
+          <span class="pill pill-green">100% PRIVATE • ZERO LEAKS</span>
+          <span class="pill pill-blue">PAGE 1 OF 2</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. TITLE AND BRIEF DESCRIPTION -->
+    <div>
+      <div class="section-title">
+        <span class="badge-num">1</span> Title and Brief Description of the Idea / Model
+      </div>
+      
+      <div class="content-box">
+        <p>
+          <strong>Project Title:</strong> <span style="font-weight:700; color:#0f172a;">ReportXpert: Autonomous Institutional Intelligence, Accreditation & Reporting Engine</span>
+        </p>
+        <p>
+          <strong>Executive Summary:</strong> Universities spend months compiling mountains of documentation across departments every semester for accreditation, ranking audits, and regulatory inspections. <strong>ReportXpert</strong> is an on-premise, sovereign artificial intelligence platform running directly on the university's own <strong>NVIDIA DGX supercomputer node</strong>. It deploys a personalized, fine-tuned Large Language Model (LLM) dedicated exclusively to the university’s internal data ecosystem.
+        </p>
+        <p>
+          The system acts as an ultra-fast digital administrative specialist. It automatically ingests raw institutional files—such as faculty CVs, published papers, patent certificates, grant award letters, student records, and placement data—verifies facts against official citation indices (e.g., Scopus), calculates statutory ratios, audits mathematical accuracy, and produces submission-ready reports for <strong>NAAC SSR, NIRF, MDRF, and internal appraisals</strong> in <strong>under 5 minutes</strong>. Because all computation occurs locally on campus hardware without internet dependency, confidential student marks, faculty salaries, and unpublished patent drafts remain 100% private with guaranteed zero data leakage.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. KEY INNOVATIVE FEATURES AND UNIQUENESS -->
+    <div>
+      <div class="section-title">
+        <span class="badge-num">2</span> Key Innovative Features and Uniqueness
+      </div>
+
+      <div class="feature-grid">
+        
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <span class="feature-title">🔒 100% Sovereign Privacy Architecture</span>
+            <span class="feature-tag">Zero Cloud Egress</span>
+          </div>
+          <div class="feature-text">
+            Commercial cloud AI tools (e.g., ChatGPT) transmit prompts and documents to overseas servers, risking legal and regulatory violations. ReportXpert operates strictly within the university’s local network on on-premise NVIDIA DGX hardware, ensuring <strong>0.00 KB cloud egress</strong> and absolute institutional data ownership.
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <span class="feature-title">👨‍🏫 Automated Faculty Research Profiler</span>
+            <span class="feature-tag">CV to Proof</span>
+          </div>
+          <div class="feature-text">
+            Ingests unstructured faculty resumes (Word/PDF) and web profiles. Automatically categorizes research publications, verifies DOIs against Scopus, maps sanctioned government grants (DST, DBT, CSIR), catalogs granted patents, and tallies Academic Performance Indicator (API) appraisal scores.
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <span class="feature-title">🤖 Dual-AI Engine (Assistant + Auditor)</span>
+            <span class="feature-tag">Cooperative AI</span>
+          </div>
+          <div class="feature-text">
+            Employs a two-agent architecture: an <em>Intelligent Coordinator</em> (Llama 3.2) that communicates in plain everyday English with professors and deans, paired with an independent <em>Strict Mathematical Auditor</em> (DeepSeek-R1) that verifies formulas, audits data consistency, and flags anomalies.
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <span class="feature-title">📑 Dynamic Multi-Format Template Engine</span>
+            <span class="feature-tag">Word & Excel</span>
+          </div>
+          <div class="feature-text">
+            Directly outputs official pre-formatted Microsoft Word (`.docx`) books with official letterheads and tables of contents, as well as multi-sheet Microsoft Excel (`.xlsx`) workbooks matching government portal column requirements with zero manual re-formatting required by office staff.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Security Strip Banner -->
+      <div class="security-banner">
+        <div class="sec-banner-header">
+          <div class="sec-banner-title">🛡️ Uniqueness: Why ReportXpert Outperforms Generic Tools</div>
+          <span style="font-size:7.5px; font-family:'JetBrains Mono', monospace; background:#1e293b; color:#cbd5e1; padding:2px 6px; border-radius:4px; border:1px solid #334155;">Institutional Sovereign Enclave</span>
+        </div>
+        <div class="sec-grid">
+          <div class="sec-pill-card">
+            <h5>On-Premise DGX Compute</h5>
+            <p>Runs locally on high-performance university hardware; requires zero internet connectivity.</p>
+          </div>
+          <div class="sec-pill-card">
+            <h5>Ground-Truth Auditing</h5>
+            <p>Every extracted statistic is tied directly to clickable digital proof files for inspection teams.</p>
+          </div>
+          <div class="sec-pill-card">
+            <h5>Natural Language Querying</h5>
+            <p>Leadership queries: "Compile Criterion 3 research summary" and receives instant verified books.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-left">
+        <span><strong>Document:</strong> Project Submission Details (Page 1 of 2)</span>
+        <span><strong>Hardware:</strong> On-Premise NVIDIA DGX</span>
+      </div>
+      <div>ReportXpert © 2026 • Autonomous Institutional Intelligence Engine</div>
+    </div>
+
+  </div>
+
+  <!-- ========================================================
+       PAGE 2: SECTIONS 3 & 4
+       3. Problem addressed / practical application
+       4. Future potential and scope for further development
+       ======================================================== -->
+  <div class="page">
+    
+    <!-- P2 Header -->
+    <div class="header">
+      <div class="brand-row">
+        <div class="logo-group">
+          <div class="logo-badge">RX</div>
+          <div>
+            <h2 class="brand-title">Report<span class="highlight">Xpert</span> <span class="sub">// Impact, Practicality & Future Scope</span></h2>
+            <p class="tagline">Real-World Problem Resolution, Operational Workflow & Long-Term Roadmap</p>
+          </div>
+        </div>
+        <div class="pill-group">
+          <span class="pill pill-green">PAGE 2 OF 2</span>
+          <span class="pill pill-nvidia">ON-PREMISE SUPERCOMPUTER</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PROBLEM ADDRESSED / PRACTICAL APPLICATION -->
+    <div>
+      <div class="section-title">
+        <span class="badge-num">3</span> Problem Addressed / Practical Application
+      </div>
+
+      <div class="content-box" style="margin-bottom: 5px;">
+        <p>
+          <strong>The Institutional Pain Point:</strong> Accreditation and ranking exercises (NAAC, NIRF, MDRF, NBA) are notorious for causing administrative gridlock in higher education institutions:
+        </p>
+        <p style="font-size:8.8px; color:#475569;">
+          • <strong>Faculty Drain:</strong> 50+ senior professors and staff are pulled away from core teaching and research for 3 to 4 months every cycle to manually collect certificates, verify publication records, and copy-paste numbers into complex spreadsheets.<br>
+          • <strong>Costly Discrepancies:</strong> Manual data consolidation results in calculation errors, missed research papers, and misplaced proof documents, directly leading to penalized accreditation grades and lost funding.<br>
+          • <strong>Privacy Vulnerability:</strong> Uploading institutional data to third-party public web AI engines creates severe risks of confidential exam marks, personnel salaries, and proprietary patent disclosures being leaked externally.
+        </p>
+      </div>
+
+      <!-- Transformation Table -->
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width: 24%;">Administrative Dimension</th>
+            <th style="width: 38%;">Traditional Manual Process (Months of Stress)</th>
+            <th style="width: 38%;">With ReportXpert (Autonomous & Verified)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Faculty Time & Workload</td>
+            <td>Months of overtime manually chasing paper receipts & typing tables</td>
+            <td>Completed in under 5 minutes by the on-premise AI engine</td>
+          </tr>
+          <tr>
+            <td>Research & Grant Tracking</td>
+            <td>Disjointed department files; uncounted citations & missed patents</td>
+            <td>100% of publications, patents & grants automatically mapped from CVs</td>
+          </tr>
+          <tr>
+            <td>Inspection Day Readiness</td>
+            <td>Panic searching through filing cabinets for misplaced proof files</td>
+            <td>Instant digital audit trail with 1-click links to every original document</td>
+          </tr>
+          <tr>
+            <td>Data Security & Privacy</td>
+            <td>Severe breach risks by utilizing third-party web tools or external vendors</td>
+            <td>100% confidential and secured on the university's internal server room</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="content-box" style="margin-top: 5px; padding: 6px 10px; background: #ecfdf5; border-color: #a7f3d0;">
+        <p style="font-size: 8.8px; color: #065f46;">
+          <strong>Practical Campus Application:</strong> Deans, department heads, and Internal Quality Assurance Cells (IQAC) utilize the conversational console to ask natural-language questions (e.g., <em>"Compile Criterion 3 research dossier for 2024"</em> or <em>"Calculate NIRF student-to-faculty ratio"</em>). The AI aggregates ground-truth records, audits mathematical ratios, and generates ready-to-submit Word dossiers and multi-tab Excel workbooks in seconds.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. FUTURE POTENTIAL AND SCOPE FOR FURTHER DEVELOPMENT -->
+    <div>
+      <div class="section-title">
+        <span class="badge-num">4</span> Future Potential and Scope for Further Development
+      </div>
+
+      <div class="future-grid">
+        
+        <!-- Future 1 -->
+        <div class="future-card">
+          <h4>🌐 1. Multi-Campus Federated Intelligence</h4>
+          <p>
+            Architectural capability to link multiple affiliated colleges and regional branch campuses under a unified, federated governance model—enabling central university leadership to aggregate institutional analytics without centralizing raw document storage.
+          </p>
+        </div>
+
+        <!-- Future 2 -->
+        <div class="future-card">
+          <h4>📈 2. Predictive Accreditation Simulation</h4>
+          <p>
+            Integrating proactive predictive models that simulate prospective NIRF ranking shifts and NAAC score changes before final submission. The system will recommend targeted faculty recruitment, citation goals, and research grants needed to attain higher grade tiers.
+          </p>
+        </div>
+
+        <!-- Future 3 -->
+        <div class="future-card">
+          <h4>🏛️ 3. Direct Regulatory API Gateway</h4>
+          <p>
+            Establishing direct, cryptographically authenticated digital submission pipelines to government portals (NAAC portal, AISHE, NIRF API), enabling 1-click end-to-end digital compliance as national accreditation bodies adopt direct API integration.
+          </p>
+        </div>
+
+        <!-- Future 4 -->
+        <div class="future-card">
+          <h4>🗣️ 4. Multilingual & Regional Language Support</h4>
+          <p>
+            Expanding localized speech-to-text and multilingual NLP to support state universities and regional vernacular institutions across India, allowing administrative personnel to query and generate institutional documents in Hindi and regional languages.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Technical & Deployment Metadata -->
+      <div class="tech-strip">
+        <div><strong>Deployment Enclave:</strong> Private University Server Room (NVIDIA DGX Compute)</div>
+        <div><strong>Data Policy:</strong> 100% Local Inference • Zero External Cloud Dependency</div>
+        <div><strong>Hackathon:</strong> SIH Problem Statement SIH26117</div>
+      </div>
+    </div>
+
+    <!-- P2 Footer -->
+    <div class="footer">
+      <div class="footer-left">
+        <span><strong>Document:</strong> ReportXpert Project Details (Page 2 of 2)</span>
+        <span><strong>Privacy:</strong> Zero Cloud Leakage</span>
+      </div>
+      <div>ReportXpert © 2026 • Autonomous Institutional Intelligence Engine</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

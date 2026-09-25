@@ -1,3 +1,13 @@
+### Option A: Recommended One-Click Launcher
+```bash
+./run_all.sh
+```
+*(Automatically verifies dependencies, builds Next.js, and launches both services).*
+
+
+
+
+
 # 💻 ReportXpert — Master Terminal Commands Reference
 
 This document contains every terminal command needed to setup, run, manage, and debug the ReportXpert Sovereign AI Workbench on any Mac or Linux machine.
